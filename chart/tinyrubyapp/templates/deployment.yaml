@@ -40,6 +40,9 @@ spec:
             - name: http
               containerPort: {{ .Values.service.port }}
               protocol: TCP
+          envFrom:
+            - configMapRef:
+              name: {{ include "tinyrubyapp.fullname" . }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
@@ -50,9 +53,6 @@ spec:
           volumeMounts:
             {{- toYaml . | nindent 12 }}
           {{- end }}
-          envFrom:
-            - configMapRef:
-              name: {{ include "tinyrubyapp.fullname" . }}
       {{- with .Values.volumes }}
       volumes:
         {{- toYaml . | nindent 8 }}
