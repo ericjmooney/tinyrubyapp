@@ -98,4 +98,5 @@ Rails.application.configure do
 
   Rails.application.routes.default_url_options[:protocol] = "http"
 
+  config.active_record.sqlite3_production_warning=false
 end
