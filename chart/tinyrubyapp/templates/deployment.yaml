@@ -42,7 +42,7 @@ spec:
               protocol: TCP
           envFrom:
             - configMapRef:
-              name: {{ include "tinyrubyapp.fullname" . }}
+                name: {{ include "tinyrubyapp.fullname" . }}
           livenessProbe:
             {{- toYaml .Values.livenessProbe | nindent 12 }}
           readinessProbe:
