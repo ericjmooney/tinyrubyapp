@@ -38,4 +38,18 @@ jobs:
             SECERT_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
           push: true
           tags: ejmooney/tinyrubyapp:latest
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
 
+      - name: Update and Push image tag
+        run: |
+          sudo wget
+https://github.com/mikefarah/yq/releases/download/v4.27.2/yq_linux_arm64
+-O /usr/bin/yq 
+          sudo chmod +x /usr/bin/yq
+          yq -i '.image.tag = "sha-${{ github.sha }}"' 'chart/tinyrubyapp/values.yaml'
+          git config user.email "ejmooney@gmail.com"
+          git config user.name "GHA"
+          git add chart/tinyrubyapp/values.yaml
+          git commit -m "GHA: Update tag to ${{ github.sha }}"
+          git push origin HEAD:prod -f
