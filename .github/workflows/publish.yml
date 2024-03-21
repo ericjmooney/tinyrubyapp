@@ -33,7 +33,7 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           context: .
-          context: Dockerfile
+          file: Dockerfile
           build-args: |
             SECERT_KEY_BASE=${{ secrets.SECRET_KEY_BASE }}
           push: true
