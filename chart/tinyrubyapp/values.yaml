@@ -7,7 +7,7 @@ image:
   repository: ejmooney/tinyrubyapp
   pullPolicy: Always
   # Overrides the image tag whose default is the chart appVersion.
-  tag: "sha-1aca3fce6a2c441fe233409b5e37aea45f558d1e"
+  tag: "sha-95ccbfa6cc1e765c60352312ed510377f37b08a9"
 imagePullSecrets: []
 nameOverride: ""
 fullnameOverride: ""
